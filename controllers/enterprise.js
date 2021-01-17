@@ -44,14 +44,9 @@ module.exports.deleteEnterprise = async (req, res) => {
 
     const { company_name, cnpj } = req.query
 
-    let deletedEnterprise
+    
 
-    if(company_name != undefined){
-        deletedEnterprise = enterpriseModel.findAndDelete({company_name: company_name})
-    }
-    else{
-        deletedEnterprise = enterpriseModel.findAndDelete({cnpj: cnpj})
-    }
+    let deletedEnterprise = await enterpriseModel.find( {$or: [{company_name: company_name},{cnpj: cnpj}]})
 
     if(!deletedEnterprise) return res.status(400).send('Não foi possível deletar a empresa.')
 
