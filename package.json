@@ -3,18 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon app index.js"
+    "dev": "nodemon app index.js",
+    "postinstall": "husky install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "commitizen": "^4.2.3",
     "express": "^4.17.1",
     "mongoose": "^5.11.12"
   },
   "devDependencies": {
+    "husky": "^5.0.6",
     "nodemon": "^2.0.7"
+  },
+  "lint-staged": {
+    "*": "npm run dev"
   }
 }
