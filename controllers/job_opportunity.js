@@ -123,3 +123,15 @@ module.exports.getAllWorkCities = async (req, res) => {
     
     return res.status(200).json(result)
 }
+
+
+module.exports.getAllEnterpriseOpportunities = async (req, res) => {
+
+    const { enterprise_name } = res.query
+
+    const enterprise = await enterpriseModel.findOne({company_name: enterprise_name})
+    
+    const enterpriseOpportunities = await opportunityModel.find({enterprise: enterprise})
+
+    return res.status(200).json(enterpriseOpportunities)
+}
