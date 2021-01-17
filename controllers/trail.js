@@ -1,0 +1,73 @@
+const trailModel = require('../models/trail')
+const courseModel = require('../models/course')
+
+module.exports.getTrails = async (req, res) => {
+
+    const { name } = req.query
+   
+    if(name == undefinided){
+        const trails = await trailModel.find()
+
+        if(!trails.length) return res.status(400).send('Não foi possível encontrar nenhuma trilha.')
+
+        return res.status(200).json(trails)
+    }
+
+    const trail = await trailModel.find({name: name})
+
+    if(!trail) return res.status(400).send('Não foi possível encontrar esta trilha.')
+
+    return res.status(200).json(trail)
+
+}
+
+module.exports.createTrail = async (req, res) => {
+
+    const {name, description, level, pre_requisites, renew_frequency, included_courses} = req.body
+
+    const newTrail = new trailModel({
+        name: name,
+        description: description,
+        level: level,
+        pre_requisites: pre_requisites,
+        renew_frequency: renew_frenquency,
+        included_courses: included_courses
+    })
+
+    const trailCreated = await newTrail.save()
+
+    if(!trailCreated) return res.status(400).send('Não foi possível criar o curso') 
+
+    return res.status(200).json(trailCreated)
+
+}
+
+
+module.exports.deleteTrail = async (req, res) => {
+
+    const { name } = req.body
+
+    const deletedTrail = await trailModel.findAndDelete({name: name})
+
+    if(!deletedTrail) return res.status(400).send('Não foi possível deletar a trilha.')
+
+    return res.status(200).json(deletedTrail)
+}
+
+module.exports.addCourse = async (req, res) => {
+
+    const { name, course_name } = req.body
+
+    const trail = await trailModel.find({name: name})
+
+    if(!trail) return res.status(400).send('Não existe esta trilha')
+
+    const course = await courseModel.find({ name: course_name })
+
+    await trail.included_courses.push(course)
+
+    if(!await trail.save()) return res.status(400).send('Não foi possível atualizar esta trilha.')
+
+    return res.status(200).json(trail)
+
+}
