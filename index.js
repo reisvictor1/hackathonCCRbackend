@@ -12,9 +12,11 @@ app.use(express.json())
 const courseRouter = require('./routes/course')
 const areaRouter = require('./routes/area')
 const enterpriseRouter = require('./routes/enterprise')
+const studentRouter = require('./routes/student')
 
 mongoose.connect('mongodb+srv://adminccr:teamccr33@team33.rtgyi.mongodb.net/dbccr33?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
 
+app.use(studentRouter)
 app.use(courseRouter)
 app.use(areaRouter)
 app.use(enterpriseRouter)
