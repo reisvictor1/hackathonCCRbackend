@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const enterpriseSchema = new mongoose.Schema({
     company_name: {
         type: String,
@@ -26,7 +25,8 @@ const enterpriseSchema = new mongoose.Schema({
         } 
     }],
     contract: {
-        type: String
+        type: String,
+        required: false
     }
 })
 

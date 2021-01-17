@@ -36,7 +36,7 @@ module.exports.createCourse = async (req, res) => {
         student_pre_requisites: student_pre_requisites
     })
 
-    const courseCreated = newCourse.save()
+    const courseCreated = await newCourse.save()
 
     if(!courseCreated) return res.status(400).send('Não foi possível criar o curso') 
 
@@ -49,7 +49,7 @@ module.exports.deleteCourse = async (req, res) => {
 
     const { id } = req.params
 
-    const deletedCourse = courseModel.findByIdAndDelete(id)
+    const deletedCourse = await courseModel.findByIdAndDelete(id)
 
     if(!deletedCourse) return res.status(400).send('Não foi possível deletar o curso.')
 
