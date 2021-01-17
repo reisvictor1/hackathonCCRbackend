@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const trailSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,6 +7,10 @@ const trailSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required: true
+    },
+    level: {
+        type: Number,
         required: true
     },
     pre_requisites: [{
