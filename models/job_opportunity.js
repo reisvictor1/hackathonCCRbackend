@@ -57,10 +57,20 @@ const job_opportunitySchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    working_hours: {
-        type: Number,
+    start_work_hour: {
+        type: Date,
         required: true
     },
+    end_work_hour: {
+        type: Date,
+        required: true
+    },
+    working_days: [{
+        day: {
+            type: Number,
+            required: true
+        }
+    }],
     estimated_remuneration: {
         type: Number,
         required: true

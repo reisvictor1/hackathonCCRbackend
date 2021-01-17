@@ -8,7 +8,7 @@ module.exports.getAllArea = async (req, res) => {
    
    
     if(name == undefined){
-        
+
         const areas = await areaModel.find()
 
         if(!areas.length) return res.status(400).send('Não foi possível encontrar nenhuma área.')
@@ -16,7 +16,7 @@ module.exports.getAllArea = async (req, res) => {
         return res.status(200).json(areas)
     }
 
-    const area = await areaModel.find({name: name})
+    const area = await areaModel.findOne({name: name})
 
     if(!area) return res.status(400).send('Não foi possível encontrar esta área.')
 

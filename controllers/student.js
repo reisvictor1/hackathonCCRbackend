@@ -17,7 +17,7 @@ module.exports.getAllStudents = async (req, res) => {
     }
 
     
-    const student = await studentModel.find({ $or: [{is_lgbtqi: is_lgbtqi}, {race: race}] })
+    const student = await studentModel.findOne({ $or: [{is_lgbtqi: is_lgbtqi}, {race: race}] })
   
     if(!student) return res.status(400).send('Não foi possível encontrar o aluno')
 

@@ -13,7 +13,7 @@ module.exports.getTeachers = async (req, res) => {
         return res.status(200).json(teachers)
     }
 
-    const teacher = await teacherModel.find({ $or: [{email: email},{is_lgbtqi: is_lgbtqi}, {race: race}]})
+    const teacher = await teacherModel.findOne({ $or: [{email: email},{is_lgbtqi: is_lgbtqi}, {race: race}]})
 
     if(!teacher) return res.status(400).send('Não foi possível recuperar o professor')
 

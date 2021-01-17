@@ -1,4 +1,4 @@
-const opportunityController = require('../controllers/opportunity') 
+const opportunityController = require('../controllers/job_opportunity') 
 const express = require('express')
 const router = express.Router()
 

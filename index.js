@@ -20,7 +20,7 @@ const teacherRouter = require('./routes/teacher')
 const trailRouter = require('./routes/trail')
 const studentProgressRouter = require('./routes/studentProgress')
 
-mongoose.connect('mongodb+srv://adminccr:teamccr33@team33.rtgyi.mongodb.net/dbccr33?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
+mongoose.connect('mongodb+srv://adminccr:teamccr33@team33.rtgyi.mongodb.net/dbccr33?retryWrites=true&w=majority',{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 
 app.use(studentRouter)
 app.use(courseRouter)
@@ -28,6 +28,7 @@ app.use(areaRouter)
 app.use(enterpriseRouter)
 app.use(job_opportunityRouter)
 app.use(teacherRouter)
+app.use(trailRouter)
 app.use(studentProgressRouter)
 
 app.listen(PORT, () => {

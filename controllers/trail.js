@@ -13,7 +13,7 @@ module.exports.getTrails = async (req, res) => {
         return res.status(200).json(trails)
     }
 
-    const trail = await trailModel.find({name: name})
+    const trail = await trailModel.findOne({name: name})
 
     if(!trail) return res.status(400).send('Não foi possível encontrar esta trilha.')
 
@@ -47,7 +47,7 @@ module.exports.deleteTrail = async (req, res) => {
 
     const { name } = req.body
 
-    const deletedTrail = await trailModel.findAndDelete({name: name})
+    const deletedTrail = await trailModel.findOneAndDelete({name: name})
 
     if(!deletedTrail) return res.status(400).send('Não foi possível deletar a trilha.')
 
@@ -58,13 +58,15 @@ module.exports.addCourse = async (req, res) => {
 
     const { name, course_name } = req.body
 
-    const course = await courseModel.find({ name: course_name })
+    const course = await courseModel.findOne({ name: course_name })
 
-    if(!course) return res.status(400).send('Não existe este curso')
+    if(!course) return res.status(400).send('Não existe este curso.')
 
     const updatedCourse = await trailModel.findOneAndUpdate({name: name}, {$push: {included_courses: course}}, {
         new: true
     });
+
+    if(!updatedCourse) return res.status(400).send('Não existe esta trilha.')
 
     return res.status(200).json(updatedCourse)
 }
