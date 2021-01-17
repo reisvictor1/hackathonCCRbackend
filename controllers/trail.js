@@ -30,7 +30,7 @@ module.exports.createTrail = async (req, res) => {
         description: description,
         level: level,
         pre_requisites: pre_requisites,
-        renew_frequency: renew_frenquency,
+        renew_frequency: renew_frequency,
         included_courses: included_courses
     })
 
@@ -58,16 +58,13 @@ module.exports.addCourse = async (req, res) => {
 
     const { name, course_name } = req.body
 
-    const trail = await trailModel.find({name: name})
-
-    if(!trail) return res.status(400).send('Não existe esta trilha')
-
     const course = await courseModel.find({ name: course_name })
 
-    await trail.included_courses.push(course)
+    if(!course) return res.status(400).send('Não existe este curso')
 
-    if(!await trail.save()) return res.status(400).send('Não foi possível atualizar esta trilha.')
+    const updatedCourse = await trailModel.findOneAndUpdate({name: name}, {$push: {included_courses: course}}, {
+        new: true
+    });
 
-    return res.status(200).json(trail)
-
+    return res.status(200).json(updatedCourse)
 }

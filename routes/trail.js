@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/trail', trailController.getTrails)
 
 router.post('/trail', trailController.createTrail)
-router.post('/trail', trailController.addCourse)
+router.post('/trail/add', trailController.addCourse)
 
 router.delete('/trail', trailController.deleteTrail)
 
