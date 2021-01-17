@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 
-router.get('/progress', studentProgressController.getStudentProgress)
+router.get('/students/:id/progresses', studentProgressController.getStudentProgresses)
 router.get('/students/:id/progress', studentProgressController.getOneStudentProgress)
 router.post('/progress', studentProgressController.createStudentProgress)
 router.post('/videos/progress', studentProgressController.addWatchedVideo)
