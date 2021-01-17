@@ -1,13 +1,15 @@
-const opportunityController = require('../controllers/job_opportunity') 
+const  opportunitiesController = require('../controllers/job_opportunity') 
 const express = require('express')
 const router = express.Router()
 
 
-router.get('/opportunity', opportunityController.getOpportunities)
+router.get('/job-opportunities',  opportunitiesController.getOpportunities)
+router.get('/job-opportunities/:id', opportunitiesController.getOneJob)
+router.get('/ job-opportunities')
 
-router.post('/opportunity', opportunityController.createOpportunity)
+router.post('/job-opportunities',  opportunitiesController.createOpportunity)
 
-router.delete('/opportunity', opportunityController.deleteOpportunity)
+router.delete('/job-opportunities',  opportunitiesController.deleteOpportunity)
 
 
 module.exports = router

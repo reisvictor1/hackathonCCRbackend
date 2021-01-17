@@ -94,3 +94,13 @@ module.exports.getJobsFromRegion = async (req, res) => {
 
     return res.status(200).json(regionJobs)
 }
+
+module.exports.getOneJob = async (req,  res) => {
+
+    const { id } = req.params
+
+    const job = await opportunityModel.findById(id)
+
+    return res.status(200).json(job)
+
+}
