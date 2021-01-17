@@ -7,8 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon app index.js",
-    "postinstall": "husky install"
+    "dev": "nodemon app index.js"
   },
   "author": "",
   "license": "ISC",
