@@ -73,3 +73,16 @@ module.exports.addWatchedVideo = async (req, res) => {
 
     return res.status(200).json(updatedProgress)
 }
+
+
+module.exports.getOneStudentProgress = async (req, res) => {
+
+    const { id } = req.params
+
+    const student = await studentModel.findById(id)
+
+    const progress = await studentProgressModel.findOne({ student: student })
+
+    return res.status(200).json(progress)
+
+}
