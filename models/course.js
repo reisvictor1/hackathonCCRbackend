@@ -4,7 +4,8 @@ const mongoose = require('mongoose')
 const courseSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
@@ -40,6 +41,24 @@ const courseSchema = new mongoose.Schema({
             ref: 'Student'
         },
         feedback: {
+            type: String,
+            required: true
+        },
+        rank: {
+            type: Number,
+            required: true
+        }
+    }],
+    videos: [{
+        title: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: false
+        },
+        link: {
             type: String,
             required: true
         }

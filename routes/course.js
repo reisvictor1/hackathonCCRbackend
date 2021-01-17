@@ -6,6 +6,7 @@ router.get('/course', courseController.getAllCourses)
 router.get('/course/:id', courseController.getOneCourse)
 
 router.post('/course', courseController.createCourse)
+router.post('/course', courseController.addVideo)
 
 router.delete('/course/:id', courseController.deleteCourse)
 
