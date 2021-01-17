@@ -44,7 +44,6 @@ const teacherSchema = new mongoose.Schema({
     // path to the file
     curriculum: {
         type: String,
-        required: true
     },
     professional_experiences: [ {
         experience: {
@@ -120,4 +119,4 @@ const teacherSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Student', studentSchema)
+module.exports = mongoose.model('Teacher', teacherSchema)

@@ -5,6 +5,14 @@ module.exports.getTeachers = async (req, res) => {
 
     const { email, is_lgbtqi, race } = req.query
 
+    if(email == undefined && is_lgbtqi == undefined && race == undefined){
+
+        const teachers = await teacherModel.find()
+        if(!teachers.length) return res.status(400).send('Não há nenhum professor')
+
+        return res.status(200).json(teachers)
+    }
+
     const teacher = await teacherModel.find({ $or: [{email: email},{is_lgbtqi: is_lgbtqi}, {race: race}]})
 
     if(!teacher) return res.status(400).send('Não foi possível recuperar o professor')
