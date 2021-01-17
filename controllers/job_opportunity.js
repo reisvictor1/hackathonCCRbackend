@@ -104,3 +104,22 @@ module.exports.getOneJob = async (req,  res) => {
     return res.status(200).json(job)
 
 }
+
+module.exports.getAllWorkCities = async (req, res) => {
+
+    const jobs = await opportunityModel.find()
+
+    let workcities = new Set()
+    jobs.map(job => {
+        let city = job['work_address']['city']
+        workcities.add(city)
+    })
+
+    let result = []
+
+    workcities.forEach(element => {
+        result.push(element)
+    })
+    
+    return res.status(200).json(result)
+}

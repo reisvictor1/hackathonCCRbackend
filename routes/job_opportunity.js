@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/job-opportunities',  opportunitiesController.getOpportunities)
 router.get('/job-opportunities/:id', opportunitiesController.getOneJob)
-router.get('/ job-opportunities')
+router.get('/work-cities', opportunitiesController.getAllWorkCities)
 
 router.post('/job-opportunities',  opportunitiesController.createOpportunity)
 
