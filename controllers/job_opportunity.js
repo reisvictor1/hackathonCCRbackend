@@ -88,7 +88,7 @@ module.exports.deleteOpportunity = async (req, res) => {
 //QUERY PARA PEGAR TODOS OS EMPREGOS DE UMA REGIAO
 module.exports.getJobsFromRegion = async (req, res) => {
 
-    const { region_name } = reg.query
+    const { region_name } = req.query
     
     const regionJobs = await opportunityModel.find({mother_area_name: await areaModel.find({name: region_name})})
 
@@ -127,7 +127,7 @@ module.exports.getAllWorkCities = async (req, res) => {
 
 module.exports.getAllEnterpriseOpportunities = async (req, res) => {
 
-    const { enterprise_name } = res.query
+    const { enterprise_name } = req.query
 
     const enterprise = await enterpriseModel.findOne({company_name: enterprise_name})
     

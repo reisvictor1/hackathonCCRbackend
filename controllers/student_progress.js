@@ -44,7 +44,7 @@ module.exports.createStudentProgress = async (req, res) => {
 
 
 module.exports.addWatchedVideo = async (req, res) => {
-    const {student_id, course_name } = reg.body
+    const {student_id, course_name } = req.body
     
     const student = await studentModel.find({_id: student_id})
     
