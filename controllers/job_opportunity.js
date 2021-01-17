@@ -90,7 +90,7 @@ module.exports.getJobsFromRegion = async (req, res) => {
 
     const { region_name } = req.query
     
-    const regionJobs = await opportunityModel.find({mother_area_name: await areaModel.find({name: region_name})})
+    const regionJobs = await opportunityModel.find({mother_area_name: await areaModel.findOne({name: region_name})})
 
     return res.status(200).json(regionJobs)
 }
