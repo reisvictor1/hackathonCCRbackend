@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const studentSchema = new mongoose.Schema({
+const teacherSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -32,15 +32,48 @@ const studentSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    experiences: [ {
-        experience: {
+    working_company: {
+        type: String
+    },
+    skills: [ {
+        skill: {
             type: String,
             required: true    
         }
     }],
-    origin_city: {
+    // path to the file
+    curriculum: {
         type: String,
         required: true
+    },
+    professional_experiences: [ {
+        experience: {
+            type: String,
+        }
+    }],
+    schooling: {
+        type: Date,
+        required: true
+    },
+    recommendations: [ {
+        experience: {
+            type: String,
+        }
+    }],
+    warnings: [ {
+        experience: {
+            type: String,
+        }
+    }],
+    banned: {
+        type: Boolean
+    },
+    salary: {
+        type: Number
+    },
+    courses: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Course'
     },
     address: {
         street: {
@@ -72,23 +105,10 @@ const studentSchema = new mongoose.Schema({
             required: true
         }
     },
-    stopped_high_school_in: {
-        type: Date,
+    origin_city: {
+        type: String,
         required: true
     },
-    frequented_schools: [ {
-        school_name: {
-            type: String,
-            required: true     
-        },
-        start_date: {
-            type: Date,
-            required: true
-        },
-        end_date: {
-            type: Date
-        }
-    }],
     gender: {
         type: String
     },
@@ -98,18 +118,6 @@ const studentSchema = new mongoose.Schema({
     race: {
         type: String
     },
-    total_family_income: {
-        type: Number,
-        required: true
-    },
-    area_of_interesting: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Area'
-    },
-    progresses: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Studend Progress'
-    }
 })
 
 module.exports = mongoose.model('Student', studentSchema)
