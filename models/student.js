@@ -108,7 +108,7 @@ const studentSchema = new mongoose.Schema({
     },
     progresses: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Studend Progress'
+        ref: 'StudendProgress'
     }
 })
 
