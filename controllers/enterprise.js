@@ -13,15 +13,7 @@ module.exports.getEnterprises = async (req, res) => {
         return res.status(200).json(enterprises)
     }
 
-    let enterprise
-
-
-    if(company_name != undefined){
-        enterprise = await enterpriseModel.find({company_name: company_name})
-    }
-    else{
-        enterprise = await enterpriseModel.find({cnpj: cnpj})
-    }
+    let enterprise = await enterpriseModel.find( {$or: [{company_name: company_name},{cnpj: cnpj}]})
 
     if(!enterprise) return res.status(400).send('Não foi possível encontrar esta empresa.')
 
