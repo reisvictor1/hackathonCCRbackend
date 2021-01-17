@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const trailSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,

@@ -15,4 +15,4 @@ const student_progressSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('StudentProgress', job_opportunitySchema)
+module.exports = mongoose.model('StudentProgress', student_progressSchema)
