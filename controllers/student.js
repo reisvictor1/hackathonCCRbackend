@@ -1,5 +1,5 @@
 const studentModel = require('../models/student')
-
+const areaModel = require('../models/area')
 
 module.exports.getAllStudents = async (req, res) => {
 
@@ -44,9 +44,9 @@ module.exports.createStudent = async (req, res) => {
         is_lgbtqi,
         race,
         total_family_income,
-        area_of_interesting,
-        progresses
     } = req.body
+
+    const area_of_interesting = await areaModel.findOne({ name: area_of_interesting})
 
     const newStudent = new studentModel({
         name: name, 
@@ -66,7 +66,7 @@ module.exports.createStudent = async (req, res) => {
         race: race,
         total_family_income: total_family_income,
         area_of_interesting: area_of_interesting,
-        progresses: progresses
+        progresses: []
     })
 
     const studentCreated = await newStudent.save()
