@@ -16,3 +16,4 @@ npm run dev
 
 ```
 
+Para acessar a aplicação, utilizar a url http://localhost:5000 e usar as suas rotas.
