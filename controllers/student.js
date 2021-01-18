@@ -44,9 +44,10 @@ module.exports.createStudent = async (req, res) => {
         is_lgbtqi,
         race,
         total_family_income,
+        area
     } = req.body
 
-    const area_of_interesting = await areaModel.findOne({ name: area_of_interesting})
+    const area_of_interesting = await areaModel.findOne({ name: area })
 
     const newStudent = new studentModel({
         name: name, 
