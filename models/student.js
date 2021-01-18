@@ -105,10 +105,6 @@ const studentSchema = new mongoose.Schema({
     area_of_interesting: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Area'
-    },
-    progresses: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'StudentProgress'
     }
 })
 

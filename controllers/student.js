@@ -66,8 +66,7 @@ module.exports.createStudent = async (req, res) => {
         is_lgbtqi: is_lgbtqi,
         race: race,
         total_family_income: total_family_income,
-        area_of_interesting: area_of_interesting,
-        progresses: []
+        area_of_interesting: area_of_interesting
     })
 
     const studentCreated = await newStudent.save()
